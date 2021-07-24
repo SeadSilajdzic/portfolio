@@ -10015,7 +10015,6 @@ section,
 .wrapper {
     width: 100vw;
     height: 100vh;
-    background-color: #040402;
     overflow-x: hidden;
     font-family: "Poppins", sans-serif;
     color: whitesmoke;
@@ -10074,6 +10073,7 @@ body::-webkit-scrollbar-thumb {
     overflow-y: scroll;
     -ms-scroll-snap-type: y mandatory;
     scroll-snap-type: y mandatory;
+    background-color: #040402;
 }
 
 section {
@@ -10082,11 +10082,12 @@ section {
     width: 70%;
     height: 90vh;
     margin: 0 auto 0 auto;
+    background-color: #040402;
 }
 
 .header {
-    width: 70%;
-    margin: 0 auto;
+    background-color: #040402;
+    width: 100%;
     height: 10vh;
     position: sticky;
     top: 0;
@@ -10096,6 +10097,8 @@ section {
 }
 
 .header .header-content {
+    width: 70%;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     height: 100%;

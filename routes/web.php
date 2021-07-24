@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\SiteManagementController;
+use App\Http\Controllers\SiteSettingsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +18,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [FrontendController::class, 'index'])->name('index');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
-Auth::routes();
+Auth::routes([
+    'register' => false
+]);
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+
+Route::middleware(['auth'])->group(function() {
+    //Admin routes
+    Route::prefix('admin')->as('admin.')->group(function() {
+        //Admin index
+        Route::get('/', [AdminController::class, 'index'])->name('index');
+
+        //Settings
+        Route::get('/settings', [SiteSettingsController::class, 'index'])->name('settings');
+
+        //Sections
+        Route::get('/home', [SiteManagementController::class, 'home'])->name('home');
+        Route::post('/home/store', [SiteManagementController::class, 'home_store'])->name('home_store');
+
+        //Contact
+        Route::resource('/contacts', ContactController::class)->except('store');
+    });
+});
