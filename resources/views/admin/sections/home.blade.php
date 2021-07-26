@@ -66,6 +66,8 @@
                         </div>
                     </div>
 
+                    <hr>
+
                     <div class="form-group row">
                         <label for="aboutDesc" class="col-form-label col-sm-2 text-sm-right">Intro</label>
                         <div class="col-sm-10">

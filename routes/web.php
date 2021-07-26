@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\SiteManagementController;
@@ -41,5 +42,11 @@ Route::middleware(['auth'])->group(function() {
 
         //Contact
         Route::resource('/contacts', ContactController::class)->except('store');
+
+        //Category
+        Route::resource('/category', CategoryController::class);
+
+        //Trash
+        Route::get('/trash', [AdminController::class, 'trash'])->name('trash');
     });
 });

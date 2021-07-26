@@ -53,6 +53,18 @@
                         <i class="align-middle" data-feather="list"></i> <span class="align-middle">Contacts</span>
                     </a>
                 </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('admin.category.index') }}">
+                        <i class="align-middle" data-feather="list"></i> <span class="align-middle">Categories</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('admin.trash') }}">
+                        <i class="align-middle" data-feather="trash"></i> <span class="align-middle">Trash</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>

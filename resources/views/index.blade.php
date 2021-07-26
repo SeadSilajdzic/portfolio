@@ -157,9 +157,10 @@
                 <div class="col-lg-12 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
                     <ul id="portfolio-flters">
                         <li data-filter="*" class="filter-active">All</li>
-                        <li data-filter=".filter-app">App</li>
-                        <li data-filter=".filter-card">Card</li>
-                        <li data-filter=".filter-web">Web</li>
+{{--                        <li data-filter=".filter-app">App</li>--}}
+                        @foreach($categories as $category)
+                            <li data-filter=".filter-{{$category->name}}">{{ $category->name }}</li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -592,14 +593,33 @@
     <div class="container">
         <h3>{{ $info->main_title }}</h3>
         <div class="social-links">
-            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-            <a href="#" class="behance"><i class="bx bxl-behance"></i></a>
-            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-            <a href="#" class="skype"><i class="bx bxl-skype"></i></a>
-            <a href="#" class="microsoft_teams"><i class="bx bxl-microsoft-teams"></i></a>
-            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-            <a href="#" class="cv"><i class="bx bx-file-blank"></i></a>
+            @if($info->facebook)
+                <a href="{{ $info->facebook }}" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
+            @endif
+
+            @if($info->behance)
+                <a href="{{ $info->behance }}" target="_blank" class="facebook"><i class="bx bxl-behance"></i></a>
+            @endif
+
+            @if($info->twitter)
+                <a href="{{ $info->twitter }}" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
+            @endif
+
+            @if($info->instagram)
+                <a href="{{ $info->instagram }}" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
+            @endif
+
+            @if($info->skype)
+                <a href="{{ $info->skype }}" target="_blank" class="skype"><i class="bx bxl-skype"></i></a>
+            @endif
+
+            @if($info->m_teams)
+                <a href="{{ $info->m_teams }}" target="_blank" class="microsoft_teams"><i class="bx bxl-microsoft-teams"></i></a>
+            @endif
+
+            @if($info->linkedin)
+                <a href="{{ $info->linkedin }}" target="_blank" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            @endif
         </div>
         <div class="copyright">
             &copy; Copyright <strong><span>{{ $info->main_title }}</span></strong>. <br><br> All Rights Reserved

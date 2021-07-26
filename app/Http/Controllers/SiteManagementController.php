@@ -39,7 +39,7 @@ class SiteManagementController extends Controller
             'role_title' => 'bail|required|string',
             'short_note' => 'nullable|string|max:150',
             'birthday' => 'bail|required|date',
-            'website' => 'bail|required|url',
+            'website' => 'bail|required|string',
             'phone' => 'bail|required|string',
             'city' => 'bail|required|string',
             'age' => 'bail|required|string',
@@ -58,6 +58,10 @@ class SiteManagementController extends Controller
             $featured_new_name = time() . $featured->getClientOriginalName();
             $featured->move('uploads/management', $featured_new_name);
             $management->featured = '/uploads/management/' . $featured_new_name;
+
+            SiteManagement::where('id', 1)->update([
+                'featured' => '/uploads/management/' . $featured_new_name,
+            ]);
         }
 
 
@@ -82,7 +86,6 @@ class SiteManagementController extends Controller
             'mail' => $request->mail,
             'status' => $request->status,
             'aboutme' => $request->aboutme,
-            'featured' => '/uploads/management/' . $featured_new_name,
             'cv' => $request->cv,
         ]);
 
