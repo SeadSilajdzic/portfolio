@@ -56,12 +56,18 @@
 
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('admin.category.index') }}">
-                        <i class="align-middle" data-feather="list"></i> <span class="align-middle">Categories</span>
+                        <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Categories</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ route('admin.trash') }}">
+                    <a class="sidebar-link" href="{{ route('admin.project.index') }}">
+                        <i class="align-middle" data-feather="book-open"></i> <span class="align-middle">Projects</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('admin.trashed') }}">
                         <i class="align-middle" data-feather="trash"></i> <span class="align-middle">Trash</span>
                     </a>
                 </li>
@@ -518,9 +524,7 @@
 
 <script src="//cdn.ckeditor.com/4.16.1/basic/ckeditor.js"></script>
 <script>
-    CKEDITOR.replace('aboutDesc');
-    CKEDITOR.replace('aboutShortNote');
-    CKEDITOR.replace('aboutme');
+    // CKEDITOR.replace('ckeditor');
 </script>
 
 @include('sweetalert::alert')

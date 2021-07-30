@@ -71,7 +71,7 @@
                     <div class="form-group row">
                         <label for="aboutDesc" class="col-form-label col-sm-2 text-sm-right">Intro</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" name="aboutDesc" placeholder="Intro" id="aboutDesc" rows="3">{{ $info->aboutDesc }}</textarea>
+                            <textarea class="form-control ckeditor" name="aboutDesc" placeholder="Intro" rows="3">{{ $info->aboutDesc }}</textarea>
                         </div>
                     </div>
 
@@ -85,7 +85,7 @@
                     <div class="form-group row">
                         <label for="short_note" class="col-form-label col-sm-2 text-sm-right">Short note</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" name="short_note" placeholder="Intro" id="aboutShortNote" rows="3">{{ $info->short_note }}</textarea>
+                            <textarea class="form-control ckeditor" name="short_note" placeholder="Intro" rows="3">{{ $info->short_note }}</textarea>
                         </div>
                     </div>
 
@@ -148,7 +148,7 @@
                     <div class="form-group row">
                         <label for="aboutme" class="col-form-label col-sm-2 text-sm-right">About me</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" name="aboutme" placeholder="Intro" id="aboutme" rows="3">{{ $info->aboutme }}</textarea>
+                            <textarea class="form-control ckeditor" name="aboutme" placeholder="About me" rows="3">{{ $info->aboutme }}</textarea>
                         </div>
                     </div>
 
@@ -157,7 +157,7 @@
                         <div class="col-sm-10">
                             <div class="custom-file">
                                 <input type="file" name="featured" class="custom-file-input" id="featured">
-                                <label class="custom-file-label" for="featured" for="featured">Choose file</label>
+                                <label class="custom-file-label" for="featured">Choose file</label>
                             </div>
                         </div>
                     </div>

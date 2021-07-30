@@ -39,6 +39,7 @@ class CreateSiteManagementTable extends Migration
             $table->string('featured')->nullable();
             $table->string('cv')->nullable();
 
+            $table->string('service_intro')->nullable();
 
             $table->string('service1title')->nullable();
             $table->string('service1desc')->nullable();

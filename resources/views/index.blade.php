@@ -6,12 +6,25 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <title>Sead Silajdzic | Web Developer</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="index, follow" />
+
     <meta content="" name="description">
     <meta content="" name="keywords">
+    <meta content="Sead Silajdzic | Web Developer" name="title">
+
+    <meta itemprop="name" content="Sead Silajdzic | Web Developer">
+    <meta itemprop="description" content="This is the page description">
+    <meta itemprop="image" content="{{ asset('/uploads/defaultimg/SSDev.jpg') }}">
+
+    <meta property="og:title" content="Sead Silajdzic | Web Developer" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="{{ asset('/uploads/defaultimg/SSDev.jpg') }}" />
+    <meta property="og:description" content="Description Here" />
 
     <!-- Favicons -->
     <link href="{{ asset('dAssets/img/seadlogo.svg') }}" rel="icon">
-    <link href="{{ asset('dAssets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link
@@ -157,9 +170,8 @@
                 <div class="col-lg-12 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
                     <ul id="portfolio-flters">
                         <li data-filter="*" class="filter-active">All</li>
-{{--                        <li data-filter=".filter-app">App</li>--}}
                         @foreach($categories as $category)
-                            <li data-filter=".filter-{{$category->name}}">{{ $category->name }}</li>
+                            <li data-filter=".filter-{{$category->id}}">{{ $category->name }}</li>
                         @endforeach
                     </ul>
                 </div>
@@ -167,149 +179,23 @@
 
             <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
 
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                    <div class="portfolio-wrap">
-                        <img src="{{ asset('dAssets/img/portfolio/portfolio-1.jpg') }}" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>App 1</h4>
-                            <p>App</p>
-                            <div class="portfolio-links">
-                                <a href="{{ asset('dAssets/img/portfolio/portfolio-1.jpg') }}" data-gallery="portfolioGallery"
-                                   class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external"
-                                   title="Portfolio Details"><i class="bx bx-link"></i></a>
+                @foreach($projects as $project)
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-{{ $project->category_id }}">
+                        <div class="portfolio-wrap">
+                            <img src="{{ $project->featured }}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>{{ $project->title }}</h4>
+                                <p>{{ $project->category->name }}</p>
+                                <div class="portfolio-links">
+                                    <a href="{{ $project->featured }}" data-gallery="portfolioGallery"
+                                       class="portfolio-lightbox" title="{{ $project->title }}"><i class="bx bx-plus"></i></a>
+                                    <a href="{{ route('project.show', $project->slug) }}" class="portfolio-details-lightbox" data-glightbox="type: external"
+                                       title="Portfolio Details"><i class="bx bx-link"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                    <div class="portfolio-wrap">
-                        <img src="{{ asset('dAssets/img/portfolio/portfolio-2.jpg') }}" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Web 3</h4>
-                            <p>Web</p>
-                            <div class="portfolio-links">
-                                <a href="{{ asset('dAssets/img/portfolio/portfolio-2.jpg') }}" data-gallery="portfolioGallery"
-                                   class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external"
-                                   title="Portfolio Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                    <div class="portfolio-wrap">
-                        <img src="{{ asset('dAssets/img/portfolio/portfolio-3.jpg') }}" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>App 2</h4>
-                            <p>App</p>
-                            <div class="portfolio-links">
-                                <a href="{{ asset('dAssets/img/portfolio/portfolio-3.jpg') }}" data-gallery="portfolioGallery"
-                                   class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external"
-                                   title="Portfolio Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                    <div class="portfolio-wrap">
-                        <img src="{{ asset('dAssets/img/portfolio/portfolio-4.jpg') }}" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Card 2</h4>
-                            <p>Card</p>
-                            <div class="portfolio-links">
-                                <a href="{{ asset('dAssets/img/portfolio/portfolio-4.jpg') }}" data-gallery="portfolioGallery"
-                                   class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external"
-                                   title="Portfolio Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                    <div class="portfolio-wrap">
-                        <img src="{{ asset('dAssets/img/portfolio/portfolio-5.jpg') }}" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Web 2</h4>
-                            <p>Web</p>
-                            <div class="portfolio-links">
-                                <a href="{{ asset('dAssets/img/portfolio/portfolio-5.jpg') }}" data-gallery="portfolioGallery"
-                                   class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external"
-                                   title="Portfolio Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                    <div class="portfolio-wrap">
-                        <img src="{{ asset('dAssets/img/portfolio/portfolio-6.jpg') }}" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>App 3</h4>
-                            <p>App</p>
-                            <div class="portfolio-links">
-                                <a href="{{ asset('dAssets/img/portfolio/portfolio-6.jpg') }}" data-gallery="portfolioGallery"
-                                   class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external"
-                                   title="Portfolio Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                    <div class="portfolio-wrap">
-                        <img src="{{ asset('dAssets/img/portfolio/portfolio-7.jpg') }}" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Card 1</h4>
-                            <p>Card</p>
-                            <div class="portfolio-links">
-                                <a href="{{ asset('dAssets/img/portfolio/portfolio-7.jpg') }}" data-gallery="portfolioGallery"
-                                   class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external"
-                                   title="Portfolio Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                    <div class="portfolio-wrap">
-                        <img src="{{ asset('dAssets/img/portfolio/portfolio-8.jpg') }}" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Card 3</h4>
-                            <p>Card</p>
-                            <div class="portfolio-links">
-                                <a href="{{ asset('dAssets/img/portfolio/portfolio-8.jpg') }}" data-gallery="portfolioGallery"
-                                   class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external"
-                                   title="Portfolio Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                    <div class="portfolio-wrap">
-                        <img src="{{ asset('dAssets/img/portfolio/portfolio-9.jpg') }}" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Web 3</h4>
-                            <p>Web</p>
-                            <div class="portfolio-links">
-                                <a href="{{ asset('dAssets/img/portfolio/portfolio-9.jpg') }}" data-gallery="portfolioGallery"
-                                   class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external"
-                                   title="Portfolio Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
 
             </div>
 
@@ -346,13 +232,16 @@
 
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
                      data-aos-delay="200">
+                    {{--Color--}}
                     <div class="icon-box iconbox-orange ">
                         <div class="icon">
+                            {{--Icon BG--}}
                             <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke="none" stroke-width="0" fill="#f5f5f5"
                                       d="M300,582.0697525312426C382.5290701553225,586.8405444964366,449.9789794690241,525.3245884688669,502.5850820975895,461.55621195738473C556.606425686781,396.0723002908107,615.8543463187945,314.28637112970534,586.6730223649479,234.56875336149918C558.9533121215079,158.8439757836574,454.9685369536778,164.00468322053177,381.49747125262974,130.76875717737553C312.15926192815925,99.40240125094834,248.97055460311594,18.661163978235184,179.8680185752513,50.54337015887873C110.5421016452524,82.52863877960104,119.82277516462835,180.83849132639028,109.12597500060166,256.43424936330496C100.08760227029461,320.3096726198365,92.17705696193138,384.0621239912766,124.79988738764834,439.7174275375508C164.83382741302287,508.01625554203684,220.96474134820875,577.5009287672846,300,582.0697525312426">
                                 </path>
                             </svg>
+                            {{--Icon--}}
                             <i class="bx bx-file"></i>
                         </div>
                         <h4><a href="">Sed Perspiciatis</a></h4>
@@ -426,93 +315,7 @@
         </div>
     </section><!-- End Services Section -->
 
-    <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials section-bg">
-        <div class="container" data-aos="fade-up">
-
-            <div class="section-title">
-                <h2>Testimonials</h2>
-            </div>
-
-            <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
-                <div class="swiper-wrapper">
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <img src="{{ asset('dAssets/img/testimonials/testimonials-1.jpg') }}" class="testimonial-img" alt="">
-                            <h3>Saul Goodman</h3>
-                            <h4>Ceo &amp; Founder</h4>
-                            <p>
-                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium
-                                quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                            </p>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <img src="{{ asset('dAssets/img/testimonials/testimonials-2.jpg') }}" class="testimonial-img" alt="">
-                            <h3>Sara Wilsson</h3>
-                            <h4>Designer</h4>
-                            <p>
-                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis
-                                quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                            </p>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <img src="{{ asset('dAssets/img/testimonials/testimonials-3.jpg') }}" class="testimonial-img" alt="">
-                            <h3>Jena Karlis</h3>
-                            <h4>Store Owner</h4>
-                            <p>
-                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim
-                                tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                            </p>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <img src="{{ asset('dAssets/img/testimonials/testimonials-4.jpg') }}" class="testimonial-img" alt="">
-                            <h3>Matt Brandon</h3>
-                            <h4>Freelancer</h4>
-                            <p>
-                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit
-                                minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                            </p>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <img src="{{ asset('dAssets/img/testimonials/testimonials-5.jpg') }}" class="testimonial-img" alt="">
-                            <h3>John Larson</h3>
-                            <h4>Entrepreneur</h4>
-                            <p>
-                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa
-                                labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                            </p>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-
-        </div>
-    </section><!-- End Testimonials Section -->
+    <!-- TT -->
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">

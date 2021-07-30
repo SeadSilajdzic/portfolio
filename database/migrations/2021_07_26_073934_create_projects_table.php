@@ -17,9 +17,12 @@ class CreateProjectsTable extends Migration
             $table->id();
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->string('client');
+            $table->string('slug');
+            $table->string('featured');
             $table->string('project_url')->nullable();
             $table->string('title', 400);
             $table->text('description');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

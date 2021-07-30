@@ -23,8 +23,13 @@
                             <td>{{ $contact->name }}</td>
                             <td>{{ $contact->email }}</td>
                             <td>{{ $contact->phone }}</td>
-                            <td>
+                            <td class="d-flex">
                                 <a href="#" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#contactDetails{{$contact->id}}">See details</a>
+                                <form action="{{ route('admin.contact.trash', $contact) }}" method="post">
+                                    @csrf
+
+                                    <button type="submit" name="btn_delete_contact" onclick="return confirm('Are you sure you want to trash this contact?')" class="btn btn-sm btn-danger"><i class="fas fa-ban"></i></button>
+                                </form>
                             </td>
                         </tr>
 
@@ -68,7 +73,11 @@
                             </div>
                         </div>
                     @empty
-                        <tr>There are no contacts yet!</tr>
+                        <tr>
+                            <td>
+                                There are no contacts yet!
+                            </td>
+                        </tr>
                     @endforelse
                 </tbody>
             </table>

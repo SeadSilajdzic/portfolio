@@ -38,6 +38,7 @@ class SiteManagement extends Model
         'featured',
         'cv',
 
+        'service_intro',
         'service1title',
         'service1desc',
         'service2title',

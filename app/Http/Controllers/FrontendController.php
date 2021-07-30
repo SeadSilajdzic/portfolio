@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Project;
 use App\Models\SiteManagement;
-use App\Models\User;
-use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
@@ -18,7 +17,15 @@ class FrontendController extends Controller
     {
         return view('index', [
             'info' => SiteManagement::firstOrFail(),
-            'categories' => Category::all()
+            'categories' => Category::all(),
+            'projects' => Project::withoutTrashed()->with('category')->get()
+        ]);
+    }
+
+    public function show(Project $project)
+    {
+        return view('portfolio-details', [
+            'project' => $project
         ]);
     }
 }

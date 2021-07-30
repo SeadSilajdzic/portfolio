@@ -26,7 +26,7 @@ class WebsiteInfoSeeder extends Seeder
             'mail' => 'silajdzic.dev@gmail.com',
             'status' => 'Freelance Web Developer',
             'aboutme' => 'Lorem ipsum dolor sit amet',
-            'featured' => 'https://seadsilajdzic.com/images/ja.jpg',
+            'service_intro' => 'Some service intro',
             'service1title' => 'service 1',
             'service1desc' => 'service 1',
             'service2title' => 'service 2',
